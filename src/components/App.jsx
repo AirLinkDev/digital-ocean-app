@@ -8,13 +8,25 @@ function App() {
 //const [headingText,setHeadingText] = useState("Hello");
 const [getColor,setColor] = useState("white");
 const [getRegistered,setRegistered]=useState("Submit");
-const [getFirstName,setFirstName]=useState("");
-const [getLastName,setLastName]=useState("");
+const [getFullName,setFullName] = useState({
+  fName : "",
+  lName : ""
+})
+//const [getFirstName,setFirstName]=useState("");
+//const [getLastName,setLastName]=useState("");
 function handleFirstname(event){
-  setFirstName(event.target.value);
+  setFullName({
+    fName : event.target.value,
+    lName : getFullName.lName
+  });
+  //setFirstName(event.target.value);
 }
 function handleLastname(event){
-  setLastName(event.target.value);
+  setFullName({
+    fName : getFullName.fName,
+    lName : event.target.value
+  });
+  //setLastName(event.target.value);
 }
 function handleHover(){
   setColor("black");
@@ -27,7 +39,7 @@ function clickHandler(){
 }
   return (
     <div className="container">
-      <h1>{"Hello "+getFirstName+" "+getLastName}</h1>
+      <h1>{"Hello "+getFullName.fName+" "+getFullName.lName}</h1>
       <input name="fName" onChange={handleFirstname} placeholder="First Name" />
       <input name="lName" onChange={handleLastname} placeholder="Last Name" />
       <button style={{backgroundColor : getColor}} onClick = {clickHandler} onMouseOver={handleHover} onMouseOut={handleMouseOut}>{getRegistered}</button>
