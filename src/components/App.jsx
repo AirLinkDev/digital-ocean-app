@@ -7,7 +7,7 @@ function App() {
 //const [getUserText,setUserText] = useState("");
 //const [headingText,setHeadingText] = useState("Hello");
 const [getColor,setColor] = useState("white");
-
+const [getRegistered,setRegistered]=useState("Submit");
 const [getFirstName,setFirstName]=useState("");
 const [getLastName,setLastName]=useState("");
 function handleFirstname(event){
@@ -22,12 +22,15 @@ function handleHover(){
 function handleMouseOut(){
   setColor("white");
 }
+function clickHandler(){
+  setRegistered("Registered");
+}
   return (
     <div className="container">
       <h1>{"Hello "+getFirstName+" "+getLastName}</h1>
       <input name="fName" onChange={handleFirstname} placeholder="First Name" />
       <input name="lName" onChange={handleLastname} placeholder="Last Name" />
-      <button style={{backgroundColor : getColor}} onMouseOver={handleHover} onMouseOut={handleMouseOut}>Submit</button>
+      <button style={{backgroundColor : getColor}} onClick = {clickHandler} onMouseOver={handleHover} onMouseOut={handleMouseOut}>{getRegistered}</button>
     </div>
   );
 }
